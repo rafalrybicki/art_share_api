@@ -19,4 +19,12 @@ Rails.application.routes.draw do
       post :unfavorite, to: 'artwork_shares#unfavorite', as: 'unfavorite'
     end
   end
+
+  resources :comments, only: [:index, :create, :destroy] do
+    member do
+      post :like, to: 'comments#like', as: 'like'
+      post :unlike, to: 'comments#unlike', as: 'unlike'
+    end
+  end
+  
 end
