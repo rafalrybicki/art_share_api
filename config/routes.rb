@@ -26,5 +26,12 @@ Rails.application.routes.draw do
       post :unlike, to: 'comments#unlike', as: 'unlike'
     end
   end
+
+  resources :collections, only: [:create, :show, :destroy] do
+    resources :artworks, only: [:index] do
+      post :add, to: 'collections#add_artwork', as: 'add'
+      delete :remove, to: 'collections#remove_artwork', as: 'remove'
+    end
+  end
   
 end

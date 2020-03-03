@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_092910) do
+ActiveRecord::Schema.define(version: 2020_03_03_093128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artwork_collections", force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "artwork_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "artwork_shares", force: :cascade do |t|
     t.integer "artwork_id"
